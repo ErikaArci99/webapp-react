@@ -1,10 +1,29 @@
+import { Link } from "react-router-dom"
+
 function Layout() {
     return (
-        <div className="container mt-4">
-            {/* layout base visibile in tutte le pagine */}
-            <p>layout base - qui ci sarà la navbar</p>
-        </div>
+        <>
+            {/* navbar di bootstrap */}
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div className="container">
+                    <Link className="navbar-brand" to="/">MovieApp</Link>
+
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/">Home</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </>
     )
 }
 
 export default Layout
+
