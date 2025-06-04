@@ -32,8 +32,37 @@ const ReviewForm = ({ movieId, onReviewAdded }) => {
     };
 
     return (
+        <form onSubmit={handleSubmit}>
+            <h4>Lascia una recensione</h4>
 
-  );
+            <input
+                type="text"
+                placeholder="Il tuo nome"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+            />
+
+            <input
+                type="number"
+                placeholder="Voto da 1 a 5"
+                value={vote}
+                onChange={(e) => setVote(e.target.value)}
+                min="1"
+                max="5"
+                required
+            />
+
+            <textarea
+                placeholder="Scrivi la tua recensione"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                required
+            ></textarea>
+
+            <button type="submit">Invia</button>
+        </form>
+    );
 };
 
 export default ReviewForm;
