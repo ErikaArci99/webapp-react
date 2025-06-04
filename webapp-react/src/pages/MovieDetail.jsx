@@ -20,14 +20,12 @@ function MovieDetail() {
         return <div className="container mt-4">Film non trovato.</div>;
     }
 
+    console.log(movie.image)
     return (
         <div className="container mt-4">
             <h1>{movie.title}</h1>
-            <img
-                src={movie.image || "https://via.placeholder.com/150x220?text=No+Image"}
-                alt={movie.title}
-                className="img-fluid movie-detail-img mb-3"
-            />
+            <img src={movie.image} alt={`Locandina di ${movie.title}`} className="img-fluid movie-detail-img mb-3" />
+
             <p><strong>Anno:</strong> {movie.release_year}</p>
             <p><strong>Regista:</strong> {movie.director}</p>
             <p><strong>Genere:</strong> {movie.genre}</p>
@@ -38,7 +36,7 @@ function MovieDetail() {
                 <ul className="list-group">
                     {movie.reviews.map(review => (
                         <li key={review.id} className="list-group-item">
-                            <strong>{review.name}</strong> - Voto: {review.vote}/10
+                            <strong>{review.name}</strong> - Voto: {review.vote}/5
                             <p>{review.text}</p>
                         </li>
                     ))}
