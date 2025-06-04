@@ -21,4 +21,4 @@ Creare la componente MovieCard in cui passare tramite props il singolo libro
 SUPER BONUS: Nella pagina di dettaglio del film copiate l'array dei film aggiungendo a ciascun oggetto un'array di recensioni. Trovate l'elemento all'interno dell'array da mostrare nella pagina attraverso l'id che avete passato come parametro e mostratelo in pagina assieme alle sue recensioni
 Buon Lavoro e buon weekend
 
-ESERICZIO TERMINATO
+ESERICZIO TERMINATO , anche SECONDA PARTE ESERCIZIO tranne per le immagini a cui devo trovare una soluzione e le stelle
