@@ -1,29 +1,53 @@
-import { useParams } from "react-router-dom"
-import movies from "../data/movies"
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function MovieDetail() {
-    const { id } = useParams()
-    const movie = movies.find(film => film.id == id)
+    const { id } = useParams();
+    const [movie, setMovie] = useState(null);
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/movies/${id}`)
+            .then(res => {
+                setMovie(res.data);
+            })
+            .catch(() => {
+                setMovie(null);
+            });
+    }, [id]);
 
     if (!movie) {
-        return <div className="container mt-4"><p>Film non trovato.</p></div>
+        return <div className="container mt-4">Film non trovato.</div>;
     }
 
     return (
         <div className="container mt-4">
             <h1>{movie.title}</h1>
-            <div className="row">
-                <div className="col-md-4">
-                    <img src={movie.poster} alt={movie.title} className="img-fluid movie-detail-img" />
-                </div>
-                <div className="col-md-8">
-                    <p className="movie-detail-description"><strong>Anno:</strong> {movie.year}</p>
-                    <p className="movie-detail-description">{movie.description}</p>
-                </div>
-            </div>
+            <img
+                src={movie.image || "https://via.placeholder.com/150x220?text=No+Image"}
+                alt={movie.title}
+                className="img-fluid movie-detail-img mb-3"
+            />
+            <p><strong>Anno:</strong> {movie.release_year}</p>
+            <p><strong>Regista:</strong> {movie.director}</p>
+            <p><strong>Genere:</strong> {movie.genre}</p>
+            <p>{movie.abstract}</p>
+
+            <h3 className="mt-4">Recensioni</h3>
+            {movie.reviews && movie.reviews.length > 0 ? (
+                <ul className="list-group">
+                    {movie.reviews.map(review => (
+                        <li key={review.id} className="list-group-item">
+                            <strong>{review.name}</strong> - Voto: {review.vote}/10
+                            <p>{review.text}</p>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p>Nessuna recensione disponibile.</p>
+            )}
         </div>
-    )
+    );
 }
 
-export default MovieDetail
-
+export default MovieDetail;
