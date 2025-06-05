@@ -95,3 +95,30 @@ h1 {
 .container {
     max-width: 960px;
 }
+
+/* form */
+.review-form {
+    margin: auto;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 0.075);
+}
+
+.review-form__title {
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.review-form__input,
+.review-form__textarea {
+    border-radius: 0.5rem;
+}
+
+.review-form__textarea {
+    resize: vertical;
+}
+
+.review-form__button {
+    border-radius: 0.5rem;
+}

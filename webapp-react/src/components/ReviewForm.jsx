@@ -32,36 +32,49 @@ const ReviewForm = ({ movieId, onReviewAdded }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h4>Lascia una recensione</h4>
+        <form onSubmit={handleSubmit} className="review-form m-5">
+            <h4 className="review-form__title">Lascia una recensione</h4>
 
-            <input
-                type="text"
-                placeholder="Il tuo nome"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-            />
+            <div className="mb-3">
+                <input
+                    type="text"
+                    placeholder="Il tuo nome"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    className="form-control form-control-lg review-form__input"
+                />
+            </div>
 
-            <input
-                type="number"
-                placeholder="Voto da 1 a 5"
-                value={vote}
-                onChange={(e) => setVote(e.target.value)}
-                min="1"
-                max="5"
-                required
-            />
+            <div className="mb-3">
+                <input
+                    type="number"
+                    placeholder="Voto da 1 a 5"
+                    value={vote}
+                    onChange={(e) => setVote(e.target.value)}
+                    min="1"
+                    max="5"
+                    required
+                    className="form-control form-control-lg review-form__input"
+                />
+            </div>
 
-            <textarea
-                placeholder="Scrivi la tua recensione"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                required
-            ></textarea>
+            <div className="mb-4">
+                <textarea
+                    placeholder="Scrivi la tua recensione"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    required
+                    className="form-control form-control-lg review-form__textarea"
+                    rows="4"
+                ></textarea>
+            </div>
 
-            <button type="submit">Invia</button>
+            <button type="submit" className="btn btn-primary btn-lg w-100 review-form__button">
+                Invia
+            </button>
         </form>
+
     );
 };
 
