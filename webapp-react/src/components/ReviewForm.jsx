@@ -9,7 +9,7 @@ const ReviewForm = ({ movieId, onReviewAdded }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('http://localhost:3000/reviews', {
+        axios.post('http://localhost:3000/movies', {
             movie_id: movieId,
             name,
             vote,

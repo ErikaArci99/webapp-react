@@ -1,12 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import ReviewForm from "../components/ReviewForm";  // importa il form recensioni
 
 function MovieDetail() {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
 
-    useEffect(() => {
+    // funzione per caricare i dati del film
+    const loadMovie = () => {
         axios.get(`http://localhost:3000/movies/${id}`)
             .then(res => {
                 setMovie(res.data);
@@ -14,13 +16,16 @@ function MovieDetail() {
             .catch(() => {
                 setMovie(null);
             });
+    };
+
+    useEffect(() => {
+        loadMovie();
     }, [id]);
 
     if (!movie) {
         return <div className="container mt-4">Film non trovato.</div>;
     }
 
-    console.log(movie.image)
     return (
         <div className="container mt-4">
             <h1>{movie.title}</h1>
@@ -44,6 +49,9 @@ function MovieDetail() {
             ) : (
                 <p>Nessuna recensione disponibile.</p>
             )}
+
+            {/* form per aggiungere una nuova recensione */}
+            <ReviewForm movieId={id} onReviewAdded={loadMovie} />
         </div>
     );
 }
