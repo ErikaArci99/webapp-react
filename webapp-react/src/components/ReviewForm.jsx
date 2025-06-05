@@ -36,8 +36,11 @@ const ReviewForm = ({ movieId, onReviewAdded }) => {
             <h4 className="review-form__title">Lascia una recensione</h4>
 
             <div className="mb-3">
+                <label htmlFor="review-name" className="form-label">Nome</label>
                 <input
                     type="text"
+                    id="review-name"
+                    name="name"
                     placeholder="Il tuo nome"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -47,8 +50,11 @@ const ReviewForm = ({ movieId, onReviewAdded }) => {
             </div>
 
             <div className="mb-3">
+                <label htmlFor="review-vote" className="form-label">Voto (da 1 a 5)</label>
                 <input
                     type="number"
+                    id="review-vote"
+                    name="vote"
                     placeholder="Voto da 1 a 5"
                     value={vote}
                     onChange={(e) => setVote(e.target.value)}
@@ -60,7 +66,10 @@ const ReviewForm = ({ movieId, onReviewAdded }) => {
             </div>
 
             <div className="mb-4">
+                <label htmlFor="review-text" className="form-label">Recensione</label>
                 <textarea
+                    id="review-text"
+                    name="text"
                     placeholder="Scrivi la tua recensione"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
@@ -74,6 +83,7 @@ const ReviewForm = ({ movieId, onReviewAdded }) => {
                 Invia
             </button>
         </form>
+
 
     );
 };
